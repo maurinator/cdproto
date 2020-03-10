@@ -66,30 +66,34 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo(out *jwriter.Write
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"profile\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Profile))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"maxResolution\":"
-		out.RawString(prefix)
-		if in.MaxResolution == nil {
-			out.RawString("null")
-		} else {
-			(*in.MaxResolution).MarshalEasyJSON(out)
-		}
+	first = false
+	out.RawString("\"profile\":")
+	out.String(string(in.Profile))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"maxFramerateNumerator\":"
-		out.RawString(prefix)
-		out.Int64(int64(in.MaxFramerateNumerator))
+	first = false
+	out.RawString("\"maxResolution\":")
+	if in.MaxResolution == nil {
+		out.RawString("null")
+	} else {
+		(*in.MaxResolution).MarshalEasyJSON(out)
 	}
-	{
-		const prefix string = ",\"maxFramerateDenominator\":"
-		out.RawString(prefix)
-		out.Int64(int64(in.MaxFramerateDenominator))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"maxFramerateNumerator\":")
+	out.Int64(int64(in.MaxFramerateNumerator))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"maxFramerateDenominator\":")
+	out.Int64(int64(in.MaxFramerateDenominator))
 	out.RawByte('}')
 }
 
@@ -171,28 +175,31 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo1(out *jwriter.Writ
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"profile\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Profile))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"maxResolution\":"
-		out.RawString(prefix)
-		if in.MaxResolution == nil {
-			out.RawString("null")
-		} else {
-			(*in.MaxResolution).MarshalEasyJSON(out)
-		}
+	first = false
+	out.RawString("\"profile\":")
+	out.String(string(in.Profile))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"minResolution\":"
-		out.RawString(prefix)
-		if in.MinResolution == nil {
-			out.RawString("null")
-		} else {
-			(*in.MinResolution).MarshalEasyJSON(out)
-		}
+	first = false
+	out.RawString("\"maxResolution\":")
+	if in.MaxResolution == nil {
+		out.RawString("null")
+	} else {
+		(*in.MaxResolution).MarshalEasyJSON(out)
+	}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"minResolution\":")
+	if in.MinResolution == nil {
+		out.RawString("null")
+	} else {
+		(*in.MinResolution).MarshalEasyJSON(out)
 	}
 	out.RawByte('}')
 }
@@ -257,16 +264,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo2(out *jwriter.Writ
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"width\":"
-		out.RawString(prefix[1:])
-		out.Int64(int64(in.Width))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"height\":"
-		out.RawString(prefix)
-		out.Int64(int64(in.Height))
+	first = false
+	out.RawString("\"width\":")
+	out.Int64(int64(in.Width))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"height\":")
+	out.Int64(int64(in.Height))
 	out.RawByte('}')
 }
 
@@ -332,21 +341,24 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo3(out *jwriter.Writ
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"type\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Type))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"id\":"
-		out.RawString(prefix)
-		out.Int64(int64(in.ID))
+	first = false
+	out.RawString("\"type\":")
+	out.String(string(in.Type))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"cpuTime\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.CPUTime))
+	first = false
+	out.RawString("\"id\":")
+	out.Int64(int64(in.ID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"cpuTime\":")
+	out.Float64(float64(in.CPUTime))
 	out.RawByte('}')
 }
 
@@ -451,44 +463,48 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo4(out *jwriter.Writ
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"imageType\":"
-		out.RawString(prefix[1:])
-		(in.ImageType).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"maxDimensions\":"
-		out.RawString(prefix)
-		if in.MaxDimensions == nil {
-			out.RawString("null")
-		} else {
-			(*in.MaxDimensions).MarshalEasyJSON(out)
-		}
+	first = false
+	out.RawString("\"imageType\":")
+	(in.ImageType).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"minDimensions\":"
-		out.RawString(prefix)
-		if in.MinDimensions == nil {
-			out.RawString("null")
-		} else {
-			(*in.MinDimensions).MarshalEasyJSON(out)
-		}
+	first = false
+	out.RawString("\"maxDimensions\":")
+	if in.MaxDimensions == nil {
+		out.RawString("null")
+	} else {
+		(*in.MaxDimensions).MarshalEasyJSON(out)
 	}
-	{
-		const prefix string = ",\"subsamplings\":"
-		out.RawString(prefix)
-		if in.Subsamplings == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v2, v3 := range in.Subsamplings {
-				if v2 > 0 {
-					out.RawByte(',')
-				}
-				(v3).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"minDimensions\":")
+	if in.MinDimensions == nil {
+		out.RawString("null")
+	} else {
+		(*in.MinDimensions).MarshalEasyJSON(out)
+	}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"subsamplings\":")
+	if in.Subsamplings == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v2, v3 := range in.Subsamplings {
+			if v2 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			(v3).MarshalEasyJSON(out)
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -581,10 +597,14 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo5(out *jwriter.Writ
 	first := true
 	_ = first
 	if len(in.ProcessInfo) != 0 {
-		const prefix string = ",\"processInfo\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		{
+		out.RawString("\"processInfo\":")
+		if in.ProcessInfo == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v5, v6 := range in.ProcessInfo {
 				if v5 > 0 {
@@ -734,39 +754,39 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo7(out *jwriter.Writ
 	first := true
 	_ = first
 	if in.Gpu != nil {
-		const prefix string = ",\"gpu\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		(*in.Gpu).MarshalEasyJSON(out)
+		out.RawString("\"gpu\":")
+		if in.Gpu == nil {
+			out.RawString("null")
+		} else {
+			(*in.Gpu).MarshalEasyJSON(out)
+		}
 	}
 	if in.ModelName != "" {
-		const prefix string = ",\"modelName\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"modelName\":")
 		out.String(string(in.ModelName))
 	}
 	if in.ModelVersion != "" {
-		const prefix string = ",\"modelVersion\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"modelVersion\":")
 		out.String(string(in.ModelVersion))
 	}
 	if in.CommandLine != "" {
-		const prefix string = ",\"commandLine\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"commandLine\":")
 		out.String(string(in.CommandLine))
 	}
 	out.RawByte('}')
@@ -1038,111 +1058,122 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo9(out *jwriter.Writ
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"devices\":"
-		out.RawString(prefix[1:])
-		if in.Devices == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v12, v13 := range in.Devices {
-				if v12 > 0 {
-					out.RawByte(',')
-				}
-				if v13 == nil {
-					out.RawString("null")
-				} else {
-					(*v13).MarshalEasyJSON(out)
-				}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"devices\":")
+	if in.Devices == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v12, v13 := range in.Devices {
+			if v12 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v13 == nil {
+				out.RawString("null")
+			} else {
+				(*v13).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
 	}
 	if (in.AuxAttributes).IsDefined() {
-		const prefix string = ",\"auxAttributes\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"auxAttributes\":")
 		(in.AuxAttributes).MarshalEasyJSON(out)
 	}
 	if (in.FeatureStatus).IsDefined() {
-		const prefix string = ",\"featureStatus\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"featureStatus\":")
 		(in.FeatureStatus).MarshalEasyJSON(out)
 	}
-	{
-		const prefix string = ",\"driverBugWorkarounds\":"
-		out.RawString(prefix)
-		if in.DriverBugWorkarounds == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v14, v15 := range in.DriverBugWorkarounds {
-				if v14 > 0 {
-					out.RawByte(',')
-				}
-				out.String(string(v15))
-			}
-			out.RawByte(']')
-		}
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"videoDecoding\":"
-		out.RawString(prefix)
-		if in.VideoDecoding == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v16, v17 := range in.VideoDecoding {
-				if v16 > 0 {
-					out.RawByte(',')
-				}
-				if v17 == nil {
-					out.RawString("null")
-				} else {
-					(*v17).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"driverBugWorkarounds\":")
+	if in.DriverBugWorkarounds == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v14, v15 := range in.DriverBugWorkarounds {
+			if v14 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			out.String(string(v15))
 		}
+		out.RawByte(']')
 	}
-	{
-		const prefix string = ",\"videoEncoding\":"
-		out.RawString(prefix)
-		if in.VideoEncoding == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v18, v19 := range in.VideoEncoding {
-				if v18 > 0 {
-					out.RawByte(',')
-				}
-				if v19 == nil {
-					out.RawString("null")
-				} else {
-					(*v19).MarshalEasyJSON(out)
-				}
-			}
-			out.RawByte(']')
-		}
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"imageDecoding\":"
-		out.RawString(prefix)
-		if in.ImageDecoding == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v20, v21 := range in.ImageDecoding {
-				if v20 > 0 {
-					out.RawByte(',')
-				}
-				if v21 == nil {
-					out.RawString("null")
-				} else {
-					(*v21).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"videoDecoding\":")
+	if in.VideoDecoding == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v16, v17 := range in.VideoDecoding {
+			if v16 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v17 == nil {
+				out.RawString("null")
+			} else {
+				(*v17).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
+	}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"videoEncoding\":")
+	if in.VideoEncoding == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v18, v19 := range in.VideoEncoding {
+			if v18 > 0 {
+				out.RawByte(',')
+			}
+			if v19 == nil {
+				out.RawString("null")
+			} else {
+				(*v19).MarshalEasyJSON(out)
+			}
+		}
+		out.RawByte(']')
+	}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"imageDecoding\":")
+	if in.ImageDecoding == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v20, v21 := range in.ImageDecoding {
+			if v20 > 0 {
+				out.RawByte(',')
+			}
+			if v21 == nil {
+				out.RawString("null")
+			} else {
+				(*v21).MarshalEasyJSON(out)
+			}
+		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -1219,46 +1250,58 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSysteminfo10(out *jwriter.Wri
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"vendorId\":"
-		out.RawString(prefix[1:])
-		out.Float64(float64(in.VendorID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"deviceId\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.DeviceID))
+	first = false
+	out.RawString("\"vendorId\":")
+	out.Float64(float64(in.VendorID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"deviceId\":")
+	out.Float64(float64(in.DeviceID))
 	if in.SubSysID != 0 {
-		const prefix string = ",\"subSysId\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"subSysId\":")
 		out.Float64(float64(in.SubSysID))
 	}
 	if in.Revision != 0 {
-		const prefix string = ",\"revision\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"revision\":")
 		out.Float64(float64(in.Revision))
 	}
-	{
-		const prefix string = ",\"vendorString\":"
-		out.RawString(prefix)
-		out.String(string(in.VendorString))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"deviceString\":"
-		out.RawString(prefix)
-		out.String(string(in.DeviceString))
+	first = false
+	out.RawString("\"vendorString\":")
+	out.String(string(in.VendorString))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"driverVendor\":"
-		out.RawString(prefix)
-		out.String(string(in.DriverVendor))
+	first = false
+	out.RawString("\"deviceString\":")
+	out.String(string(in.DeviceString))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"driverVersion\":"
-		out.RawString(prefix)
-		out.String(string(in.DriverVersion))
+	first = false
+	out.RawString("\"driverVendor\":")
+	out.String(string(in.DriverVendor))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"driverVersion\":")
+	out.String(string(in.DriverVersion))
 	out.RawByte('}')
 }
 

@@ -54,14 +54,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoMedia(out *jwriter.Writer, in
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"name\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Name))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"name\":")
+	out.String(string(in.Name))
 	if in.Value != "" {
-		const prefix string = ",\"value\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"value\":")
 		out.String(string(in.Value))
 	}
 	out.RawByte('}')
@@ -131,26 +135,30 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoMedia1(out *jwriter.Writer, i
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"type\":"
-		out.RawString(prefix[1:])
-		(in.Type).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"timestamp\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Timestamp))
+	first = false
+	out.RawString("\"type\":")
+	(in.Type).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"name\":"
-		out.RawString(prefix)
-		out.String(string(in.Name))
+	first = false
+	out.RawString("\"timestamp\":")
+	out.Float64(float64(in.Timestamp))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"value\":"
-		out.RawString(prefix)
-		out.String(string(in.Value))
+	first = false
+	out.RawString("\"name\":")
+	out.String(string(in.Name))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"value\":")
+	out.String(string(in.Value))
 	out.RawByte('}')
 }
 
@@ -233,21 +241,22 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoMedia2(out *jwriter.Writer, i
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"players\":"
-		out.RawString(prefix[1:])
-		if in.Players == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v2, v3 := range in.Players {
-				if v2 > 0 {
-					out.RawByte(',')
-				}
-				out.String(string(v3))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"players\":")
+	if in.Players == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v2, v3 := range in.Players {
+			if v2 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			out.String(string(v3))
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -341,30 +350,32 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoMedia3(out *jwriter.Writer, i
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"playerId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.PlayerID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"properties\":"
-		out.RawString(prefix)
-		if in.Properties == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v5, v6 := range in.Properties {
-				if v5 > 0 {
-					out.RawByte(',')
-				}
-				if v6 == nil {
-					out.RawString("null")
-				} else {
-					(*v6).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"playerId\":")
+	out.String(string(in.PlayerID))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"properties\":")
+	if in.Properties == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v5, v6 := range in.Properties {
+			if v5 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v6 == nil {
+				out.RawString("null")
+			} else {
+				(*v6).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -458,30 +469,32 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoMedia4(out *jwriter.Writer, i
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"playerId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.PlayerID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"events\":"
-		out.RawString(prefix)
-		if in.Events == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v8, v9 := range in.Events {
-				if v8 > 0 {
-					out.RawByte(',')
-				}
-				if v9 == nil {
-					out.RawString("null")
-				} else {
-					(*v9).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"playerId\":")
+	out.String(string(in.PlayerID))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"events\":")
+	if in.Events == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v8, v9 := range in.Events {
+			if v8 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v9 == nil {
+				out.RawString("null")
+			} else {
+				(*v9).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }

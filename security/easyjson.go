@@ -96,36 +96,52 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSecurity(out *jwriter.Writer,
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"securityState\":"
-		out.RawString(prefix[1:])
-		(in.SecurityState).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"securityState\":")
+	(in.SecurityState).MarshalEasyJSON(out)
 	if in.CertificateSecurityState != nil {
-		const prefix string = ",\"certificateSecurityState\":"
-		out.RawString(prefix)
-		(*in.CertificateSecurityState).MarshalEasyJSON(out)
-	}
-	if in.SafetyTipInfo != nil {
-		const prefix string = ",\"safetyTipInfo\":"
-		out.RawString(prefix)
-		(*in.SafetyTipInfo).MarshalEasyJSON(out)
-	}
-	{
-		const prefix string = ",\"securityStateIssueIds\":"
-		out.RawString(prefix)
-		if in.SecurityStateIssueIds == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"certificateSecurityState\":")
+		if in.CertificateSecurityState == nil {
 			out.RawString("null")
 		} else {
-			out.RawByte('[')
-			for v2, v3 := range in.SecurityStateIssueIds {
-				if v2 > 0 {
-					out.RawByte(',')
-				}
-				out.String(string(v3))
-			}
-			out.RawByte(']')
+			(*in.CertificateSecurityState).MarshalEasyJSON(out)
 		}
+	}
+	if in.SafetyTipInfo != nil {
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"safetyTipInfo\":")
+		if in.SafetyTipInfo == nil {
+			out.RawString("null")
+		} else {
+			(*in.SafetyTipInfo).MarshalEasyJSON(out)
+		}
+	}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"securityStateIssueIds\":")
+	if in.SecurityStateIssueIds == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v2, v3 := range in.SecurityStateIssueIds {
+			if v2 > 0 {
+				out.RawByte(',')
+			}
+			out.String(string(v3))
+		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -242,51 +258,62 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSecurity1(out *jwriter.Writer
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"securityState\":"
-		out.RawString(prefix[1:])
-		(in.SecurityState).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"title\":"
-		out.RawString(prefix)
-		out.String(string(in.Title))
+	first = false
+	out.RawString("\"securityState\":")
+	(in.SecurityState).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"summary\":"
-		out.RawString(prefix)
-		out.String(string(in.Summary))
+	first = false
+	out.RawString("\"title\":")
+	out.String(string(in.Title))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"description\":"
-		out.RawString(prefix)
-		out.String(string(in.Description))
+	first = false
+	out.RawString("\"summary\":")
+	out.String(string(in.Summary))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"mixedContentType\":"
-		out.RawString(prefix)
-		(in.MixedContentType).MarshalEasyJSON(out)
+	first = false
+	out.RawString("\"description\":")
+	out.String(string(in.Description))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"certificate\":"
-		out.RawString(prefix)
-		if in.Certificate == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v6, v7 := range in.Certificate {
-				if v6 > 0 {
-					out.RawByte(',')
-				}
-				out.String(string(v7))
+	first = false
+	out.RawString("\"mixedContentType\":")
+	(in.MixedContentType).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"certificate\":")
+	if in.Certificate == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v6, v7 := range in.Certificate {
+			if v6 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			out.String(string(v7))
 		}
+		out.RawByte(']')
 	}
 	if len(in.Recommendations) != 0 {
-		const prefix string = ",\"recommendations\":"
-		out.RawString(prefix)
-		{
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"recommendations\":")
+		if in.Recommendations == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v8, v9 := range in.Recommendations {
 				if v8 > 0 {
@@ -358,11 +385,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSecurity2(out *jwriter.Writer
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"ignore\":"
-		out.RawString(prefix[1:])
-		out.Bool(bool(in.Ignore))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"ignore\":")
+	out.Bool(bool(in.Ignore))
 	out.RawByte('}')
 }
 
@@ -426,14 +454,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSecurity3(out *jwriter.Writer
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"safetyTipStatus\":"
-		out.RawString(prefix[1:])
-		(in.SafetyTipStatus).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"safetyTipStatus\":")
+	(in.SafetyTipStatus).MarshalEasyJSON(out)
 	if in.SafeURL != "" {
-		const prefix string = ",\"safeUrl\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"safeUrl\":")
 		out.String(string(in.SafeURL))
 	}
 	out.RawByte('}')
@@ -505,14 +537,15 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSecurity4(out *jwriter.Writer
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"visibleSecurityState\":"
-		out.RawString(prefix[1:])
-		if in.VisibleSecurityState == nil {
-			out.RawString("null")
-		} else {
-			(*in.VisibleSecurityState).MarshalEasyJSON(out)
-		}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"visibleSecurityState\":")
+	if in.VisibleSecurityState == nil {
+		out.RawString("null")
+	} else {
+		(*in.VisibleSecurityState).MarshalEasyJSON(out)
 	}
 	out.RawByte('}')
 }
@@ -608,34 +641,39 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSecurity5(out *jwriter.Writer
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"securityState\":"
-		out.RawString(prefix[1:])
-		(in.SecurityState).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"explanations\":"
-		out.RawString(prefix)
-		if in.Explanations == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v11, v12 := range in.Explanations {
-				if v11 > 0 {
-					out.RawByte(',')
-				}
-				if v12 == nil {
-					out.RawString("null")
-				} else {
-					(*v12).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"securityState\":")
+	(in.SecurityState).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"explanations\":")
+	if in.Explanations == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v11, v12 := range in.Explanations {
+			if v11 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v12 == nil {
+				out.RawString("null")
+			} else {
+				(*v12).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
 	}
 	if in.Summary != "" {
-		const prefix string = ",\"summary\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"summary\":")
 		out.String(string(in.Summary))
 	}
 	out.RawByte('}')
@@ -888,115 +926,139 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoSecurity8(out *jwriter.Writer
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"protocol\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Protocol))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"keyExchange\":"
-		out.RawString(prefix)
-		out.String(string(in.KeyExchange))
+	first = false
+	out.RawString("\"protocol\":")
+	out.String(string(in.Protocol))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"keyExchange\":")
+	out.String(string(in.KeyExchange))
 	if in.KeyExchangeGroup != "" {
-		const prefix string = ",\"keyExchangeGroup\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"keyExchangeGroup\":")
 		out.String(string(in.KeyExchangeGroup))
 	}
-	{
-		const prefix string = ",\"cipher\":"
-		out.RawString(prefix)
-		out.String(string(in.Cipher))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"cipher\":")
+	out.String(string(in.Cipher))
 	if in.Mac != "" {
-		const prefix string = ",\"mac\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"mac\":")
 		out.String(string(in.Mac))
 	}
-	{
-		const prefix string = ",\"certificate\":"
-		out.RawString(prefix)
-		if in.Certificate == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v14, v15 := range in.Certificate {
-				if v14 > 0 {
-					out.RawByte(',')
-				}
-				out.String(string(v15))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"certificate\":")
+	if in.Certificate == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v14, v15 := range in.Certificate {
+			if v14 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			out.String(string(v15))
 		}
+		out.RawByte(']')
 	}
-	{
-		const prefix string = ",\"subjectName\":"
-		out.RawString(prefix)
-		out.String(string(in.SubjectName))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"issuer\":"
-		out.RawString(prefix)
-		out.String(string(in.Issuer))
+	first = false
+	out.RawString("\"subjectName\":")
+	out.String(string(in.SubjectName))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"validFrom\":"
-		out.RawString(prefix)
-		if in.ValidFrom == nil {
-			out.RawString("null")
-		} else {
-			(*in.ValidFrom).MarshalEasyJSON(out)
-		}
+	first = false
+	out.RawString("\"issuer\":")
+	out.String(string(in.Issuer))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"validTo\":"
-		out.RawString(prefix)
-		if in.ValidTo == nil {
-			out.RawString("null")
-		} else {
-			(*in.ValidTo).MarshalEasyJSON(out)
-		}
+	first = false
+	out.RawString("\"validFrom\":")
+	if in.ValidFrom == nil {
+		out.RawString("null")
+	} else {
+		(*in.ValidFrom).MarshalEasyJSON(out)
+	}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"validTo\":")
+	if in.ValidTo == nil {
+		out.RawString("null")
+	} else {
+		(*in.ValidTo).MarshalEasyJSON(out)
 	}
 	if in.CertificateNetworkError != "" {
-		const prefix string = ",\"certificateNetworkError\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"certificateNetworkError\":")
 		out.String(string(in.CertificateNetworkError))
 	}
-	{
-		const prefix string = ",\"certificateHasWeakSignature\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.CertificateHasWeakSignature))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"certificateHasSha1Signature\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.CertificateHasSha1signature))
+	first = false
+	out.RawString("\"certificateHasWeakSignature\":")
+	out.Bool(bool(in.CertificateHasWeakSignature))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"modernSSL\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ModernSSL))
+	first = false
+	out.RawString("\"certificateHasSha1Signature\":")
+	out.Bool(bool(in.CertificateHasSha1signature))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"obsoleteSslProtocol\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ObsoleteSslProtocol))
+	first = false
+	out.RawString("\"modernSSL\":")
+	out.Bool(bool(in.ModernSSL))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"obsoleteSslKeyExchange\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ObsoleteSslKeyExchange))
+	first = false
+	out.RawString("\"obsoleteSslProtocol\":")
+	out.Bool(bool(in.ObsoleteSslProtocol))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"obsoleteSslCipher\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ObsoleteSslCipher))
+	first = false
+	out.RawString("\"obsoleteSslKeyExchange\":")
+	out.Bool(bool(in.ObsoleteSslKeyExchange))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"obsoleteSslSignature\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.ObsoleteSslSignature))
+	first = false
+	out.RawString("\"obsoleteSslCipher\":")
+	out.Bool(bool(in.ObsoleteSslCipher))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"obsoleteSslSignature\":")
+	out.Bool(bool(in.ObsoleteSslSignature))
 	out.RawByte('}')
 }
 

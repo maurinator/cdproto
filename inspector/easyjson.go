@@ -170,11 +170,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoInspector2(out *jwriter.Write
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"reason\":"
-		out.RawString(prefix[1:])
-		(in.Reason).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"reason\":")
+	(in.Reason).MarshalEasyJSON(out)
 	out.RawByte('}')
 }
 

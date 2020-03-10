@@ -84,10 +84,14 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage(out *jwriter.Wri
 	first := true
 	_ = first
 	if len(in.CacheDataEntries) != 0 {
-		const prefix string = ",\"cacheDataEntries\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		{
+		out.RawString("\"cacheDataEntries\":")
+		if in.CacheDataEntries == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v2, v3 := range in.CacheDataEntries {
 				if v2 > 0 {
@@ -103,13 +107,11 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage(out *jwriter.Wri
 		}
 	}
 	if in.ReturnCount != 0 {
-		const prefix string = ",\"returnCount\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"returnCount\":")
 		out.Float64(float64(in.ReturnCount))
 	}
 	out.RawByte('}')
@@ -179,24 +181,34 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage1(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"cacheId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.CacheID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"cacheId\":")
+	out.String(string(in.CacheID))
 	if in.SkipCount != 0 {
-		const prefix string = ",\"skipCount\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"skipCount\":")
 		out.Int64(int64(in.SkipCount))
 	}
 	if in.PageSize != 0 {
-		const prefix string = ",\"pageSize\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"pageSize\":")
 		out.Int64(int64(in.PageSize))
 	}
 	if in.PathFilter != "" {
-		const prefix string = ",\"pathFilter\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"pathFilter\":")
 		out.String(string(in.PathFilter))
 	}
 	out.RawByte('}')
@@ -269,10 +281,16 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage2(out *jwriter.Wr
 	first := true
 	_ = first
 	if in.Response != nil {
-		const prefix string = ",\"response\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		(*in.Response).MarshalEasyJSON(out)
+		out.RawString("\"response\":")
+		if in.Response == nil {
+			out.RawString("null")
+		} else {
+			(*in.Response).MarshalEasyJSON(out)
+		}
 	}
 	out.RawByte('}')
 }
@@ -368,35 +386,38 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage3(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"cacheId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.CacheID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"requestURL\":"
-		out.RawString(prefix)
-		out.String(string(in.RequestURL))
+	first = false
+	out.RawString("\"cacheId\":")
+	out.String(string(in.CacheID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"requestHeaders\":"
-		out.RawString(prefix)
-		if in.RequestHeaders == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v5, v6 := range in.RequestHeaders {
-				if v5 > 0 {
-					out.RawByte(',')
-				}
-				if v6 == nil {
-					out.RawString("null")
-				} else {
-					(*v6).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"requestURL\":")
+	out.String(string(in.RequestURL))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"requestHeaders\":")
+	if in.RequestHeaders == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v5, v6 := range in.RequestHeaders {
+			if v5 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v6 == nil {
+				out.RawString("null")
+			} else {
+				(*v6).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -489,10 +510,14 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage4(out *jwriter.Wr
 	first := true
 	_ = first
 	if len(in.Caches) != 0 {
-		const prefix string = ",\"caches\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		{
+		out.RawString("\"caches\":")
+		if in.Caches == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v8, v9 := range in.Caches {
 				if v8 > 0 {
@@ -568,11 +593,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage5(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"securityOrigin\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.SecurityOrigin))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"securityOrigin\":")
+	out.String(string(in.SecurityOrigin))
 	out.RawByte('}')
 }
 
@@ -636,16 +662,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage6(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"name\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Name))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"value\":"
-		out.RawString(prefix)
-		out.String(string(in.Value))
+	first = false
+	out.RawString("\"name\":")
+	out.String(string(in.Name))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"value\":")
+	out.String(string(in.Value))
 	out.RawByte('}')
 }
 
@@ -709,16 +737,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage7(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"cacheId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.CacheID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"request\":"
-		out.RawString(prefix)
-		out.String(string(in.Request))
+	first = false
+	out.RawString("\"cacheId\":")
+	out.String(string(in.CacheID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"request\":")
+	out.String(string(in.Request))
 	out.RawByte('}')
 }
 
@@ -780,11 +810,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage8(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"cacheId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.CacheID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"cacheId\":")
+	out.String(string(in.CacheID))
 	out.RawByte('}')
 }
 
@@ -918,75 +949,83 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage9(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"requestURL\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.RequestURL))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"requestMethod\":"
-		out.RawString(prefix)
-		out.String(string(in.RequestMethod))
+	first = false
+	out.RawString("\"requestURL\":")
+	out.String(string(in.RequestURL))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"requestHeaders\":"
-		out.RawString(prefix)
-		if in.RequestHeaders == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v12, v13 := range in.RequestHeaders {
-				if v12 > 0 {
-					out.RawByte(',')
-				}
-				if v13 == nil {
-					out.RawString("null")
-				} else {
-					(*v13).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"requestMethod\":")
+	out.String(string(in.RequestMethod))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"requestHeaders\":")
+	if in.RequestHeaders == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v12, v13 := range in.RequestHeaders {
+			if v12 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
-		}
-	}
-	{
-		const prefix string = ",\"responseTime\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.ResponseTime))
-	}
-	{
-		const prefix string = ",\"responseStatus\":"
-		out.RawString(prefix)
-		out.Int64(int64(in.ResponseStatus))
-	}
-	{
-		const prefix string = ",\"responseStatusText\":"
-		out.RawString(prefix)
-		out.String(string(in.ResponseStatusText))
-	}
-	{
-		const prefix string = ",\"responseType\":"
-		out.RawString(prefix)
-		(in.ResponseType).MarshalEasyJSON(out)
-	}
-	{
-		const prefix string = ",\"responseHeaders\":"
-		out.RawString(prefix)
-		if in.ResponseHeaders == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v14, v15 := range in.ResponseHeaders {
-				if v14 > 0 {
-					out.RawByte(',')
-				}
-				if v15 == nil {
-					out.RawString("null")
-				} else {
-					(*v15).MarshalEasyJSON(out)
-				}
+			if v13 == nil {
+				out.RawString("null")
+			} else {
+				(*v13).MarshalEasyJSON(out)
 			}
-			out.RawByte(']')
 		}
+		out.RawByte(']')
+	}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"responseTime\":")
+	out.Float64(float64(in.ResponseTime))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"responseStatus\":")
+	out.Int64(int64(in.ResponseStatus))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"responseStatusText\":")
+	out.String(string(in.ResponseStatusText))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"responseType\":")
+	(in.ResponseType).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"responseHeaders\":")
+	if in.ResponseHeaders == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v14, v15 := range in.ResponseHeaders {
+			if v14 > 0 {
+				out.RawByte(',')
+			}
+			if v15 == nil {
+				out.RawString("null")
+			} else {
+				(*v15).MarshalEasyJSON(out)
+			}
+		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -1049,11 +1088,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage10(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"body\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Body))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"body\":")
+	out.String(string(in.Body))
 	out.RawByte('}')
 }
 
@@ -1119,21 +1159,24 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCachestorage11(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"cacheId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.CacheID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"securityOrigin\":"
-		out.RawString(prefix)
-		out.String(string(in.SecurityOrigin))
+	first = false
+	out.RawString("\"cacheId\":")
+	out.String(string(in.CacheID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"cacheName\":"
-		out.RawString(prefix)
-		out.String(string(in.CacheName))
+	first = false
+	out.RawString("\"securityOrigin\":")
+	out.String(string(in.SecurityOrigin))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"cacheName\":")
+	out.String(string(in.CacheName))
 	out.RawByte('}')
 }
 

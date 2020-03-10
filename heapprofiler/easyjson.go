@@ -56,19 +56,19 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler(out *jwriter.Wri
 	first := true
 	_ = first
 	if in.ReportProgress {
-		const prefix string = ",\"reportProgress\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"reportProgress\":")
 		out.Bool(bool(in.ReportProgress))
 	}
 	if in.TreatGlobalObjectsAsRoots {
-		const prefix string = ",\"treatGlobalObjectsAsRoots\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"treatGlobalObjectsAsRoots\":")
 		out.Bool(bool(in.TreatGlobalObjectsAsRoots))
 	}
 	out.RawByte('}')
@@ -135,19 +135,19 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler1(out *jwriter.Wr
 	first := true
 	_ = first
 	if in.ReportProgress {
-		const prefix string = ",\"reportProgress\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"reportProgress\":")
 		out.Bool(bool(in.ReportProgress))
 	}
 	if in.TreatGlobalObjectsAsRoots {
-		const prefix string = ",\"treatGlobalObjectsAsRoots\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"treatGlobalObjectsAsRoots\":")
 		out.Bool(bool(in.TreatGlobalObjectsAsRoots))
 	}
 	out.RawByte('}')
@@ -220,10 +220,16 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler2(out *jwriter.Wr
 	first := true
 	_ = first
 	if in.Profile != nil {
-		const prefix string = ",\"profile\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		(*in.Profile).MarshalEasyJSON(out)
+		out.RawString("\"profile\":")
+		if in.Profile == nil {
+			out.RawString("null")
+		} else {
+			(*in.Profile).MarshalEasyJSON(out)
+		}
 	}
 	out.RawByte('}')
 }
@@ -346,9 +352,11 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler4(out *jwriter.Wr
 	first := true
 	_ = first
 	if in.TrackAllocations {
-		const prefix string = ",\"trackAllocations\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"trackAllocations\":")
 		out.Bool(bool(in.TrackAllocations))
 	}
 	out.RawByte('}')
@@ -413,9 +421,11 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler5(out *jwriter.Wr
 	first := true
 	_ = first
 	if in.SamplingInterval != 0 {
-		const prefix string = ",\"samplingInterval\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"samplingInterval\":")
 		out.Float64(float64(in.SamplingInterval))
 	}
 	out.RawByte('}')
@@ -483,21 +493,24 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler6(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"size\":"
-		out.RawString(prefix[1:])
-		out.Float64(float64(in.Size))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"nodeId\":"
-		out.RawString(prefix)
-		out.Int64(int64(in.NodeID))
+	first = false
+	out.RawString("\"size\":")
+	out.Float64(float64(in.Size))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"ordinal\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Ordinal))
+	first = false
+	out.RawString("\"nodeId\":")
+	out.Int64(int64(in.NodeID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"ordinal\":")
+	out.Float64(float64(in.Ordinal))
 	out.RawByte('}')
 }
 
@@ -602,44 +615,48 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler7(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"callFrame\":"
-		out.RawString(prefix[1:])
-		if in.CallFrame == nil {
-			out.RawString("null")
-		} else {
-			(*in.CallFrame).MarshalEasyJSON(out)
-		}
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"selfSize\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.SelfSize))
+	first = false
+	out.RawString("\"callFrame\":")
+	if in.CallFrame == nil {
+		out.RawString("null")
+	} else {
+		(*in.CallFrame).MarshalEasyJSON(out)
 	}
-	{
-		const prefix string = ",\"id\":"
-		out.RawString(prefix)
-		out.Int64(int64(in.ID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"children\":"
-		out.RawString(prefix)
-		if in.Children == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v2, v3 := range in.Children {
-				if v2 > 0 {
-					out.RawByte(',')
-				}
-				if v3 == nil {
-					out.RawString("null")
-				} else {
-					(*v3).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"selfSize\":")
+	out.Float64(float64(in.SelfSize))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"id\":")
+	out.Int64(int64(in.ID))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"children\":")
+	if in.Children == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v2, v3 := range in.Children {
+			if v2 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v3 == nil {
+				out.RawString("null")
+			} else {
+				(*v3).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -741,34 +758,36 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler8(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"head\":"
-		out.RawString(prefix[1:])
-		if in.Head == nil {
-			out.RawString("null")
-		} else {
-			(*in.Head).MarshalEasyJSON(out)
-		}
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"samples\":"
-		out.RawString(prefix)
-		if in.Samples == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v5, v6 := range in.Samples {
-				if v5 > 0 {
-					out.RawByte(',')
-				}
-				if v6 == nil {
-					out.RawString("null")
-				} else {
-					(*v6).MarshalEasyJSON(out)
-				}
+	first = false
+	out.RawString("\"head\":")
+	if in.Head == nil {
+		out.RawString("null")
+	} else {
+		(*in.Head).MarshalEasyJSON(out)
+	}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"samples\":")
+	if in.Samples == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v5, v6 := range in.Samples {
+			if v5 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v6 == nil {
+				out.RawString("null")
+			} else {
+				(*v6).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -840,10 +859,16 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler9(out *jwriter.Wr
 	first := true
 	_ = first
 	if in.Profile != nil {
-		const prefix string = ",\"profile\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		(*in.Profile).MarshalEasyJSON(out)
+		out.RawString("\"profile\":")
+		if in.Profile == nil {
+			out.RawString("null")
+		} else {
+			(*in.Profile).MarshalEasyJSON(out)
+		}
 	}
 	out.RawByte('}')
 }
@@ -974,10 +999,16 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler11(out *jwriter.W
 	first := true
 	_ = first
 	if in.Result != nil {
-		const prefix string = ",\"result\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		(*in.Result).MarshalEasyJSON(out)
+		out.RawString("\"result\":")
+		if in.Result == nil {
+			out.RawString("null")
+		} else {
+			(*in.Result).MarshalEasyJSON(out)
+		}
 	}
 	out.RawByte('}')
 }
@@ -1042,14 +1073,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler12(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"objectId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.ObjectID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"objectId\":")
+	out.String(string(in.ObjectID))
 	if in.ObjectGroup != "" {
-		const prefix string = ",\"objectGroup\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"objectGroup\":")
 		out.String(string(in.ObjectGroup))
 	}
 	out.RawByte('}')
@@ -1114,9 +1149,11 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler13(out *jwriter.W
 	first := true
 	_ = first
 	if in.HeapSnapshotObjectID != "" {
-		const prefix string = ",\"heapSnapshotObjectId\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"heapSnapshotObjectId\":")
 		out.String(string(in.HeapSnapshotObjectID))
 	}
 	out.RawByte('}')
@@ -1180,11 +1217,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler14(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"objectId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.ObjectID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"objectId\":")
+	out.String(string(in.ObjectID))
 	out.RawByte('}')
 }
 
@@ -1309,19 +1347,24 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler16(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"done\":"
-		out.RawString(prefix[1:])
-		out.Int64(int64(in.Done))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"total\":"
-		out.RawString(prefix)
-		out.Int64(int64(in.Total))
+	first = false
+	out.RawString("\"done\":")
+	out.Int64(int64(in.Done))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"total\":")
+	out.Int64(int64(in.Total))
 	if in.Finished {
-		const prefix string = ",\"finished\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"finished\":")
 		out.Bool(bool(in.Finished))
 	}
 	out.RawByte('}')
@@ -1387,16 +1430,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler17(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"lastSeenObjectId\":"
-		out.RawString(prefix[1:])
-		out.Int64(int64(in.LastSeenObjectID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"timestamp\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Timestamp))
+	first = false
+	out.RawString("\"lastSeenObjectId\":")
+	out.Int64(int64(in.LastSeenObjectID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"timestamp\":")
+	out.Float64(float64(in.Timestamp))
 	out.RawByte('}')
 }
 
@@ -1479,21 +1524,22 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler18(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"statsUpdate\":"
-		out.RawString(prefix[1:])
-		if in.StatsUpdate == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v8, v9 := range in.StatsUpdate {
-				if v8 > 0 {
-					out.RawByte(',')
-				}
-				out.Int64(int64(v9))
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"statsUpdate\":")
+	if in.StatsUpdate == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v8, v9 := range in.StatsUpdate {
+			if v8 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			out.Int64(int64(v9))
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -1556,11 +1602,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler19(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"chunk\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Chunk))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"chunk\":")
+	out.String(string(in.Chunk))
 	out.RawByte('}')
 }
 
@@ -1799,11 +1846,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeapprofiler23(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"heapObjectId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.HeapObjectID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"heapObjectId\":")
+	out.String(string(in.HeapObjectID))
 	out.RawByte('}')
 }
 

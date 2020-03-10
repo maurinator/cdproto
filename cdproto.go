@@ -164,6 +164,7 @@ const (
 	CommandDOMCollectClassNamesFromSubtree                 = dom.CommandCollectClassNamesFromSubtree
 	CommandDOMCopyTo                                       = dom.CommandCopyTo
 	CommandDOMDescribeNode                                 = dom.CommandDescribeNode
+	CommandDOMScrollIntoViewIfNeeded                       = dom.CommandScrollIntoViewIfNeeded
 	CommandDOMDisable                                      = dom.CommandDisable
 	CommandDOMDiscardSearchResults                         = dom.CommandDiscardSearchResults
 	CommandDOMEnable                                       = dom.CommandEnable
@@ -290,11 +291,13 @@ const (
 	CommandEmulationSetDocumentCookieDisabled              = emulation.CommandSetDocumentCookieDisabled
 	CommandEmulationSetEmitTouchEventsForMouse             = emulation.CommandSetEmitTouchEventsForMouse
 	CommandEmulationSetEmulatedMedia                       = emulation.CommandSetEmulatedMedia
+	CommandEmulationSetEmulatedVisionDeficiency            = emulation.CommandSetEmulatedVisionDeficiency
 	CommandEmulationSetGeolocationOverride                 = emulation.CommandSetGeolocationOverride
 	CommandEmulationSetPageScaleFactor                     = emulation.CommandSetPageScaleFactor
 	CommandEmulationSetScriptExecutionDisabled             = emulation.CommandSetScriptExecutionDisabled
 	CommandEmulationSetTouchEmulationEnabled               = emulation.CommandSetTouchEmulationEnabled
 	CommandEmulationSetVirtualTimePolicy                   = emulation.CommandSetVirtualTimePolicy
+	CommandEmulationSetLocaleOverride                      = emulation.CommandSetLocaleOverride
 	CommandEmulationSetTimezoneOverride                    = emulation.CommandSetTimezoneOverride
 	CommandEmulationSetUserAgentOverride                   = emulation.CommandSetUserAgentOverride
 	EventEmulationVirtualTimeBudgetExpired                 = "Emulation.virtualTimeBudgetExpired"
@@ -514,7 +517,6 @@ const (
 	EventPageCompilationCacheProduced                      = "Page.compilationCacheProduced"
 	CommandPerformanceDisable                              = performance.CommandDisable
 	CommandPerformanceEnable                               = performance.CommandEnable
-	CommandPerformanceSetTimeDomain                        = performance.CommandSetTimeDomain
 	CommandPerformanceGetMetrics                           = performance.CommandGetMetrics
 	EventPerformanceMetrics                                = "Performance.metrics"
 	CommandProfilerDisable                                 = profiler.CommandDisable
@@ -958,6 +960,9 @@ func UnmarshalMessage(msg *Message) (interface{}, error) {
 	case CommandDOMDescribeNode:
 		v = new(dom.DescribeNodeReturns)
 
+	case CommandDOMScrollIntoViewIfNeeded:
+		return emptyVal, nil
+
 	case CommandDOMDisable:
 		return emptyVal, nil
 
@@ -1336,6 +1341,9 @@ func UnmarshalMessage(msg *Message) (interface{}, error) {
 	case CommandEmulationSetEmulatedMedia:
 		return emptyVal, nil
 
+	case CommandEmulationSetEmulatedVisionDeficiency:
+		return emptyVal, nil
+
 	case CommandEmulationSetGeolocationOverride:
 		return emptyVal, nil
 
@@ -1350,6 +1358,9 @@ func UnmarshalMessage(msg *Message) (interface{}, error) {
 
 	case CommandEmulationSetVirtualTimePolicy:
 		v = new(emulation.SetVirtualTimePolicyReturns)
+
+	case CommandEmulationSetLocaleOverride:
+		return emptyVal, nil
 
 	case CommandEmulationSetTimezoneOverride:
 		return emptyVal, nil
@@ -2006,9 +2017,6 @@ func UnmarshalMessage(msg *Message) (interface{}, error) {
 		return emptyVal, nil
 
 	case CommandPerformanceEnable:
-		return emptyVal, nil
-
-	case CommandPerformanceSetTimeDomain:
 		return emptyVal, nil
 
 	case CommandPerformanceGetMetrics:

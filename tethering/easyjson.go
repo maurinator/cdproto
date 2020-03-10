@@ -52,11 +52,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoTethering(out *jwriter.Writer
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"port\":"
-		out.RawString(prefix[1:])
-		out.Int64(int64(in.Port))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"port\":")
+	out.Int64(int64(in.Port))
 	out.RawByte('}')
 }
 
@@ -120,16 +121,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoTethering1(out *jwriter.Write
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"port\":"
-		out.RawString(prefix[1:])
-		out.Int64(int64(in.Port))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"connectionId\":"
-		out.RawString(prefix)
-		out.String(string(in.ConnectionID))
+	first = false
+	out.RawString("\"port\":")
+	out.Int64(int64(in.Port))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"connectionId\":")
+	out.String(string(in.ConnectionID))
 	out.RawByte('}')
 }
 
@@ -191,11 +194,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoTethering2(out *jwriter.Write
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"port\":"
-		out.RawString(prefix[1:])
-		out.Int64(int64(in.Port))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"port\":")
+	out.Int64(int64(in.Port))
 	out.RawByte('}')
 }
 

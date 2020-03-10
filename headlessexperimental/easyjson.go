@@ -55,19 +55,19 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeadlessexperimental(out *jwr
 	first := true
 	_ = first
 	if in.Format != "" {
-		const prefix string = ",\"format\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"format\":")
 		(in.Format).MarshalEasyJSON(out)
 	}
 	if in.Quality != 0 {
-		const prefix string = ",\"quality\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"quality\":")
 		out.Int64(int64(in.Quality))
 	}
 	out.RawByte('}')
@@ -252,19 +252,19 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeadlessexperimental3(out *jw
 	first := true
 	_ = first
 	if in.HasDamage {
-		const prefix string = ",\"hasDamage\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"hasDamage\":")
 		out.Bool(bool(in.HasDamage))
 	}
 	if in.ScreenshotData != "" {
-		const prefix string = ",\"screenshotData\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"screenshotData\":")
 		out.String(string(in.ScreenshotData))
 	}
 	out.RawByte('}')
@@ -343,40 +343,40 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoHeadlessexperimental4(out *jw
 	first := true
 	_ = first
 	if in.FrameTimeTicks != 0 {
-		const prefix string = ",\"frameTimeTicks\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"frameTimeTicks\":")
 		out.Float64(float64(in.FrameTimeTicks))
 	}
 	if in.Interval != 0 {
-		const prefix string = ",\"interval\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"interval\":")
 		out.Float64(float64(in.Interval))
 	}
 	if in.NoDisplayUpdates {
-		const prefix string = ",\"noDisplayUpdates\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"noDisplayUpdates\":")
 		out.Bool(bool(in.NoDisplayUpdates))
 	}
 	if in.Screenshot != nil {
-		const prefix string = ",\"screenshot\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
-		(*in.Screenshot).MarshalEasyJSON(out)
+		first = false
+		out.RawString("\"screenshot\":")
+		if in.Screenshot == nil {
+			out.RawString("null")
+		} else {
+			(*in.Screenshot).MarshalEasyJSON(out)
+		}
 	}
 	out.RawByte('}')
 }

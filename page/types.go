@@ -355,6 +355,68 @@ type InstallabilityError struct {
 	ErrorArguments []*InstallabilityErrorArgument `json:"errorArguments"` // The list of error arguments (e.g. {name:'minimum-icon-size-in-pixels', value:'64'}).
 }
 
+// ReferrerPolicy the referring-policy used for the navigation.
+//
+// See: https://chromedevtools.github.io/devtools-protocol/tot/Page#type-ReferrerPolicy
+type ReferrerPolicy string
+
+// String returns the ReferrerPolicy as string value.
+func (t ReferrerPolicy) String() string {
+	return string(t)
+}
+
+// ReferrerPolicy values.
+const (
+	ReferrerPolicyNoReferrer                  ReferrerPolicy = "noReferrer"
+	ReferrerPolicyNoReferrerWhenDowngrade     ReferrerPolicy = "noReferrerWhenDowngrade"
+	ReferrerPolicyOrigin                      ReferrerPolicy = "origin"
+	ReferrerPolicyOriginWhenCrossOrigin       ReferrerPolicy = "originWhenCrossOrigin"
+	ReferrerPolicySameOrigin                  ReferrerPolicy = "sameOrigin"
+	ReferrerPolicyStrictOrigin                ReferrerPolicy = "strictOrigin"
+	ReferrerPolicyStrictOriginWhenCrossOrigin ReferrerPolicy = "strictOriginWhenCrossOrigin"
+	ReferrerPolicyUnsafeURL                   ReferrerPolicy = "unsafeUrl"
+)
+
+// MarshalEasyJSON satisfies easyjson.Marshaler.
+func (t ReferrerPolicy) MarshalEasyJSON(out *jwriter.Writer) {
+	out.String(string(t))
+}
+
+// MarshalJSON satisfies json.Marshaler.
+func (t ReferrerPolicy) MarshalJSON() ([]byte, error) {
+	return easyjson.Marshal(t)
+}
+
+// UnmarshalEasyJSON satisfies easyjson.Unmarshaler.
+func (t *ReferrerPolicy) UnmarshalEasyJSON(in *jlexer.Lexer) {
+	switch ReferrerPolicy(in.String()) {
+	case ReferrerPolicyNoReferrer:
+		*t = ReferrerPolicyNoReferrer
+	case ReferrerPolicyNoReferrerWhenDowngrade:
+		*t = ReferrerPolicyNoReferrerWhenDowngrade
+	case ReferrerPolicyOrigin:
+		*t = ReferrerPolicyOrigin
+	case ReferrerPolicyOriginWhenCrossOrigin:
+		*t = ReferrerPolicyOriginWhenCrossOrigin
+	case ReferrerPolicySameOrigin:
+		*t = ReferrerPolicySameOrigin
+	case ReferrerPolicyStrictOrigin:
+		*t = ReferrerPolicyStrictOrigin
+	case ReferrerPolicyStrictOriginWhenCrossOrigin:
+		*t = ReferrerPolicyStrictOriginWhenCrossOrigin
+	case ReferrerPolicyUnsafeURL:
+		*t = ReferrerPolicyUnsafeURL
+
+	default:
+		in.AddError(errors.New("unknown ReferrerPolicy value"))
+	}
+}
+
+// UnmarshalJSON satisfies json.Unmarshaler.
+func (t *ReferrerPolicy) UnmarshalJSON(buf []byte) error {
+	return easyjson.Unmarshal(buf, t)
+}
+
 // FileChooserOpenedMode input mode.
 //
 // See: https://chromedevtools.github.io/devtools-protocol/tot/Page#event-fileChooserOpened

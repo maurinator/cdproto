@@ -56,21 +56,24 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoDeviceorientation(out *jwrite
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"alpha\":"
-		out.RawString(prefix[1:])
-		out.Float64(float64(in.Alpha))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"beta\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Beta))
+	first = false
+	out.RawString("\"alpha\":")
+	out.Float64(float64(in.Alpha))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"gamma\":"
-		out.RawString(prefix)
-		out.Float64(float64(in.Gamma))
+	first = false
+	out.RawString("\"beta\":")
+	out.Float64(float64(in.Beta))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"gamma\":")
+	out.Float64(float64(in.Gamma))
 	out.RawByte('}')
 }
 

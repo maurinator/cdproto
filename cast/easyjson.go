@@ -52,11 +52,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCast(out *jwriter.Writer, in 
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"sinkName\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.SinkName))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"sinkName\":")
+	out.String(string(in.SinkName))
 	out.RawByte('}')
 }
 
@@ -118,11 +119,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCast1(out *jwriter.Writer, in
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"sinkName\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.SinkName))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"sinkName\":")
+	out.String(string(in.SinkName))
 	out.RawByte('}')
 }
 
@@ -188,19 +190,24 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCast2(out *jwriter.Writer, in
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"name\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.Name))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"id\":"
-		out.RawString(prefix)
-		out.String(string(in.ID))
+	first = false
+	out.RawString("\"name\":")
+	out.String(string(in.Name))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"id\":")
+	out.String(string(in.ID))
 	if in.Session != "" {
-		const prefix string = ",\"session\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"session\":")
 		out.String(string(in.Session))
 	}
 	out.RawByte('}')
@@ -264,11 +271,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCast3(out *jwriter.Writer, in
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"sinkName\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.SinkName))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"sinkName\":")
+	out.String(string(in.SinkName))
 	out.RawByte('}')
 }
 
@@ -359,25 +367,26 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCast4(out *jwriter.Writer, in
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"sinks\":"
-		out.RawString(prefix[1:])
-		if in.Sinks == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-			out.RawString("null")
-		} else {
-			out.RawByte('[')
-			for v2, v3 := range in.Sinks {
-				if v2 > 0 {
-					out.RawByte(',')
-				}
-				if v3 == nil {
-					out.RawString("null")
-				} else {
-					(*v3).MarshalEasyJSON(out)
-				}
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"sinks\":")
+	if in.Sinks == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v2, v3 := range in.Sinks {
+			if v2 > 0 {
+				out.RawByte(',')
 			}
-			out.RawByte(']')
+			if v3 == nil {
+				out.RawString("null")
+			} else {
+				(*v3).MarshalEasyJSON(out)
+			}
 		}
+		out.RawByte(']')
 	}
 	out.RawByte('}')
 }
@@ -440,11 +449,12 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCast5(out *jwriter.Writer, in
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"issueMessage\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.IssueMessage))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"issueMessage\":")
+	out.String(string(in.IssueMessage))
 	out.RawByte('}')
 }
 
@@ -507,9 +517,11 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoCast6(out *jwriter.Writer, in
 	first := true
 	_ = first
 	if in.PresentationURL != "" {
-		const prefix string = ",\"presentationUrl\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"presentationUrl\":")
 		out.String(string(in.PresentationURL))
 	}
 	out.RawByte('}')

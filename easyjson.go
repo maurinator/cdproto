@@ -131,60 +131,56 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdproto1(out *jwriter.Writer, in Mes
 	first := true
 	_ = first
 	if in.ID != 0 {
-		const prefix string = ",\"id\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"id\":")
 		out.Int64(int64(in.ID))
 	}
 	if in.SessionID != "" {
-		const prefix string = ",\"sessionId\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"sessionId\":")
 		out.String(string(in.SessionID))
 	}
 	if in.Method != "" {
-		const prefix string = ",\"method\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"method\":")
 		out.String(string(in.Method))
 	}
 	if (in.Params).IsDefined() {
-		const prefix string = ",\"params\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"params\":")
 		(in.Params).MarshalEasyJSON(out)
 	}
 	if (in.Result).IsDefined() {
-		const prefix string = ",\"result\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"result\":")
 		(in.Result).MarshalEasyJSON(out)
 	}
 	if in.Error != nil {
-		const prefix string = ",\"error\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
-		(*in.Error).MarshalEasyJSON(out)
+		first = false
+		out.RawString("\"error\":")
+		if in.Error == nil {
+			out.RawString("null")
+		} else {
+			(*in.Error).MarshalEasyJSON(out)
+		}
 	}
 	out.RawByte('}')
 }
@@ -249,16 +245,18 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdproto2(out *jwriter.Writer, in Err
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"code\":"
-		out.RawString(prefix[1:])
-		out.Int64(int64(in.Code))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"message\":"
-		out.RawString(prefix)
-		out.String(string(in.Message))
+	first = false
+	out.RawString("\"code\":")
+	out.Int64(int64(in.Code))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"message\":")
+	out.String(string(in.Message))
 	out.RawByte('}')
 }
 

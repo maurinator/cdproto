@@ -93,49 +93,86 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility(out *jwriter.Wr
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"type\":"
-		out.RawString(prefix[1:])
-		(in.Type).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"type\":")
+	(in.Type).MarshalEasyJSON(out)
 	if in.Value != nil {
-		const prefix string = ",\"value\":"
-		out.RawString(prefix)
-		(*in.Value).MarshalEasyJSON(out)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"value\":")
+		if in.Value == nil {
+			out.RawString("null")
+		} else {
+			(*in.Value).MarshalEasyJSON(out)
+		}
 	}
 	if in.Attribute != "" {
-		const prefix string = ",\"attribute\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"attribute\":")
 		out.String(string(in.Attribute))
 	}
 	if in.AttributeValue != nil {
-		const prefix string = ",\"attributeValue\":"
-		out.RawString(prefix)
-		(*in.AttributeValue).MarshalEasyJSON(out)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"attributeValue\":")
+		if in.AttributeValue == nil {
+			out.RawString("null")
+		} else {
+			(*in.AttributeValue).MarshalEasyJSON(out)
+		}
 	}
 	if in.Superseded {
-		const prefix string = ",\"superseded\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"superseded\":")
 		out.Bool(bool(in.Superseded))
 	}
 	if in.NativeSource != "" {
-		const prefix string = ",\"nativeSource\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"nativeSource\":")
 		(in.NativeSource).MarshalEasyJSON(out)
 	}
 	if in.NativeSourceValue != nil {
-		const prefix string = ",\"nativeSourceValue\":"
-		out.RawString(prefix)
-		(*in.NativeSourceValue).MarshalEasyJSON(out)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"nativeSourceValue\":")
+		if in.NativeSourceValue == nil {
+			out.RawString("null")
+		} else {
+			(*in.NativeSourceValue).MarshalEasyJSON(out)
+		}
 	}
 	if in.Invalid {
-		const prefix string = ",\"invalid\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"invalid\":")
 		out.Bool(bool(in.Invalid))
 	}
 	if in.InvalidReason != "" {
-		const prefix string = ",\"invalidReason\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"invalidReason\":")
 		out.String(string(in.InvalidReason))
 	}
 	out.RawByte('}')
@@ -263,20 +300,29 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility1(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"type\":"
-		out.RawString(prefix[1:])
-		(in.Type).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"type\":")
+	(in.Type).MarshalEasyJSON(out)
 	if (in.Value).IsDefined() {
-		const prefix string = ",\"value\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"value\":")
 		(in.Value).MarshalEasyJSON(out)
 	}
 	if len(in.RelatedNodes) != 0 {
-		const prefix string = ",\"relatedNodes\":"
-		out.RawString(prefix)
-		{
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"relatedNodes\":")
+		if in.RelatedNodes == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v3, v4 := range in.RelatedNodes {
 				if v3 > 0 {
@@ -292,9 +338,14 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility1(out *jwriter.W
 		}
 	}
 	if len(in.Sources) != 0 {
-		const prefix string = ",\"sources\":"
-		out.RawString(prefix)
-		{
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"sources\":")
+		if in.Sources == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v5, v6 := range in.Sources {
 				if v5 > 0 {
@@ -374,19 +425,26 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility2(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"backendDOMNodeId\":"
-		out.RawString(prefix[1:])
-		out.Int64(int64(in.BackendDOMNodeID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"backendDOMNodeId\":")
+	out.Int64(int64(in.BackendDOMNodeID))
 	if in.Idref != "" {
-		const prefix string = ",\"idref\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"idref\":")
 		out.String(string(in.Idref))
 	}
 	if in.Text != "" {
-		const prefix string = ",\"text\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"text\":")
 		out.String(string(in.Text))
 	}
 	out.RawByte('}')
@@ -460,19 +518,21 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility3(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"name\":"
-		out.RawString(prefix[1:])
-		(in.Name).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"value\":"
-		out.RawString(prefix)
-		if in.Value == nil {
-			out.RawString("null")
-		} else {
-			(*in.Value).MarshalEasyJSON(out)
-		}
+	first = false
+	out.RawString("\"name\":")
+	(in.Name).MarshalEasyJSON(out)
+	if !first {
+		out.RawByte(',')
+	}
+	first = false
+	out.RawString("\"value\":")
+	if in.Value == nil {
+		out.RawString("null")
+	} else {
+		(*in.Value).MarshalEasyJSON(out)
 	}
 	out.RawByte('}')
 }
@@ -664,20 +724,27 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility4(out *jwriter.W
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"nodeId\":"
-		out.RawString(prefix[1:])
-		out.String(string(in.NodeID))
+	if !first {
+		out.RawByte(',')
 	}
-	{
-		const prefix string = ",\"ignored\":"
-		out.RawString(prefix)
-		out.Bool(bool(in.Ignored))
+	first = false
+	out.RawString("\"nodeId\":")
+	out.String(string(in.NodeID))
+	if !first {
+		out.RawByte(',')
 	}
+	first = false
+	out.RawString("\"ignored\":")
+	out.Bool(bool(in.Ignored))
 	if len(in.IgnoredReasons) != 0 {
-		const prefix string = ",\"ignoredReasons\":"
-		out.RawString(prefix)
-		{
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"ignoredReasons\":")
+		if in.IgnoredReasons == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v10, v11 := range in.IgnoredReasons {
 				if v10 > 0 {
@@ -693,29 +760,62 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility4(out *jwriter.W
 		}
 	}
 	if in.Role != nil {
-		const prefix string = ",\"role\":"
-		out.RawString(prefix)
-		(*in.Role).MarshalEasyJSON(out)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"role\":")
+		if in.Role == nil {
+			out.RawString("null")
+		} else {
+			(*in.Role).MarshalEasyJSON(out)
+		}
 	}
 	if in.Name != nil {
-		const prefix string = ",\"name\":"
-		out.RawString(prefix)
-		(*in.Name).MarshalEasyJSON(out)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"name\":")
+		if in.Name == nil {
+			out.RawString("null")
+		} else {
+			(*in.Name).MarshalEasyJSON(out)
+		}
 	}
 	if in.Description != nil {
-		const prefix string = ",\"description\":"
-		out.RawString(prefix)
-		(*in.Description).MarshalEasyJSON(out)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"description\":")
+		if in.Description == nil {
+			out.RawString("null")
+		} else {
+			(*in.Description).MarshalEasyJSON(out)
+		}
 	}
 	if in.Value != nil {
-		const prefix string = ",\"value\":"
-		out.RawString(prefix)
-		(*in.Value).MarshalEasyJSON(out)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"value\":")
+		if in.Value == nil {
+			out.RawString("null")
+		} else {
+			(*in.Value).MarshalEasyJSON(out)
+		}
 	}
 	if len(in.Properties) != 0 {
-		const prefix string = ",\"properties\":"
-		out.RawString(prefix)
-		{
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"properties\":")
+		if in.Properties == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v12, v13 := range in.Properties {
 				if v12 > 0 {
@@ -731,9 +831,14 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility4(out *jwriter.W
 		}
 	}
 	if len(in.ChildIds) != 0 {
-		const prefix string = ",\"childIds\":"
-		out.RawString(prefix)
-		{
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"childIds\":")
+		if in.ChildIds == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v14, v15 := range in.ChildIds {
 				if v14 > 0 {
@@ -745,8 +850,11 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility4(out *jwriter.W
 		}
 	}
 	if in.BackendDOMNodeID != 0 {
-		const prefix string = ",\"backendDOMNodeId\":"
-		out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
+		}
+		first = false
+		out.RawString("\"backendDOMNodeId\":")
 		out.Int64(int64(in.BackendDOMNodeID))
 	}
 	out.RawByte('}')
@@ -840,10 +948,14 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility5(out *jwriter.W
 	first := true
 	_ = first
 	if len(in.Nodes) != 0 {
-		const prefix string = ",\"nodes\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		{
+		out.RawString("\"nodes\":")
+		if in.Nodes == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v17, v18 := range in.Nodes {
 				if v17 > 0 {
@@ -926,39 +1038,35 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility6(out *jwriter.W
 	first := true
 	_ = first
 	if in.NodeID != 0 {
-		const prefix string = ",\"nodeId\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
+		out.RawString("\"nodeId\":")
 		out.Int64(int64(in.NodeID))
 	}
 	if in.BackendNodeID != 0 {
-		const prefix string = ",\"backendNodeId\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"backendNodeId\":")
 		out.Int64(int64(in.BackendNodeID))
 	}
 	if in.ObjectID != "" {
-		const prefix string = ",\"objectId\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"objectId\":")
 		out.String(string(in.ObjectID))
 	}
 	if in.FetchRelatives {
-		const prefix string = ",\"fetchRelatives\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
+		if !first {
+			out.RawByte(',')
 		}
+		first = false
+		out.RawString("\"fetchRelatives\":")
 		out.Bool(bool(in.FetchRelatives))
 	}
 	out.RawByte('}')
@@ -1052,10 +1160,14 @@ func easyjsonC5a4559bEncodeGithubComChromedpCdprotoAccessibility7(out *jwriter.W
 	first := true
 	_ = first
 	if len(in.Nodes) != 0 {
-		const prefix string = ",\"nodes\":"
+		if !first {
+			out.RawByte(',')
+		}
 		first = false
-		out.RawString(prefix[1:])
-		{
+		out.RawString("\"nodes\":")
+		if in.Nodes == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+			out.RawString("null")
+		} else {
 			out.RawByte('[')
 			for v20, v21 := range in.Nodes {
 				if v20 > 0 {
